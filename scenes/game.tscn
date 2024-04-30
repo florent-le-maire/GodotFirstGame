@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://cecvhr7qqjfxf"]
+[gd_scene load_steps=15 format=3 uid="uid://cecvhr7qqjfxf"]
 
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_3o8dm"]
 [ext_resource type="PackedScene" uid="uid://d07u2ej5rg4kx" path="res://scenes/player.tscn" id="1_4mn41"]
 [ext_resource type="Texture2D" uid="uid://bpbyv2t58jfw2" path="res://assets/sprites/world_tileset.png" id="2_46ole"]
 [ext_resource type="PackedScene" uid="uid://dmy4nd6cfaege" path="res://scenes/platform.tscn" id="3_58lff"]
 [ext_resource type="PackedScene" uid="uid://df7s5ycjdp2bf" path="res://scenes/coin.tscn" id="4_ehfh6"]
 [ext_resource type="PackedScene" uid="uid://d0pjceiowlxah" path="res://scenes/killzone.tscn" id="5_wxmro"]
 [ext_resource type="PackedScene" uid="uid://buyyftd27av8m" path="res://scenes/slime.tscn" id="6_wfkwj"]
+[ext_resource type="FontFile" uid="uid://bcgxl5yxjwpmv" path="res://assets/fonts/PixelOperator8.ttf" id="7_36r20"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4nw22"]
 texture = ExtResource("2_46ole")
@@ -453,6 +455,20 @@ _data = {
 
 [node name="Game" type="Node2D"]
 
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_3o8dm")
+
+[node name="ScoreLabel" type="Label" parent="GameManager"]
+offset_left = 120.0
+offset_top = 35.0
+offset_right = 256.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_36r20")
+theme_override_font_sizes/font_size = 8
+text = "You collected X coins."
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vgepy")
 format = 2
@@ -514,3 +530,15 @@ autoplay = "move"
 
 [node name="Slime" parent="Slimes" instance=ExtResource("6_wfkwj")]
 position = Vector2(232, 16)
+
+[node name="Labels" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="Labels"]
+offset_left = 1.0
+offset_top = 22.0
+offset_right = 92.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_36r20")
+theme_override_font_sizes/font_size = 8
+text = "Space to jump."
